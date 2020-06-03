@@ -1,0 +1,10 @@
+- name: ISS Location
+  hosts: localhost
+  tasks: 
+  - name: GET URL for ISS location
+    uri: 
+      url: https://api.wheretheiss.at/v1/satellites/25544
+    register: uri_result
+  - name: Print Response
+    debug: 
+      msg: "{{uri_result.json | to_nice_json}}"
